@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'tic-tac-toe-client',
+    modulePrefix: 'tictactoe-client',
     environment,
     rootURL: '/',
     locationType: 'history',

@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 
-import { setupTest } from 'tic-tac-toe-client/tests/helpers';
+import { setupTest } from 'tictactoe-client/tests/helpers';
 
 module('Unit | Model | game', function (hooks) {
   setupTest(hooks);

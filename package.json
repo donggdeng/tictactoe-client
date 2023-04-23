@@ -1,8 +1,8 @@
 {
-  "name": "tic-tac-toe-client",
+  "name": "tictactoe-client",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for tic-tac-toe-client goes here",
+  "description": "Small description for tictactoe-client goes here",
   "repository": "",
   "license": "MIT",
   "author": "",

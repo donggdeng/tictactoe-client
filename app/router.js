@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'tic-tac-toe-client/config/environment';
+import config from 'tictactoe-client/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
