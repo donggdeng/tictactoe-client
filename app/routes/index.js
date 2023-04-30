@@ -5,6 +5,6 @@ export default class IndexRoute extends Route {
   @service store;
 
   model() {
-    return this.store.findAll('games');
+    return this.store.findRecord('game', 1);
   }
 }

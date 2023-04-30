@@ -15,3 +15,10 @@
     <div class="border-dark border-2 cell" id="9"></div>
   </div>
 </div>
+
+{{#each @model.moves as |move|}}
+  <div>
+    <span>Position: {{move.position}}</span>
+    <span>Player: {{move.playerId}}</span>
+  </div>
+{{/each}}
