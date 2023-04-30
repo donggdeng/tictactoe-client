@@ -1,2 +1,14 @@
 {{#game-board game=@model}}
 {{/game-board}}
+
+
+<div class="container text-center mt-5">
+  <h5>
+    Turn :
+    {{#if (eq (mod @model.moves.length 2) 0)}}
+      <span>Player 1 (x)</span>
+    {{else}}
+      <span>Player 2 (o)</span>
+    {{/if}}
+  </h5>
+</div>
