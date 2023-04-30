@@ -8,3 +8,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.cell:not(.played):hover {
+  background-color: #eee;
+  cursor: pointer;
+}

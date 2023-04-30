@@ -13,6 +13,7 @@ export default class GameBoard extends Component {
       );
 
       cell.innerText = move.player == 'player1' ? 'x' : 'o';
+      cell.classList.add('played');
     });
   }
 }
