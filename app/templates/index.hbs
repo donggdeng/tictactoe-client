@@ -1,5 +1,17 @@
-{{#each @model as |game|}}
-  <h1>{{game.status}}</h1>
-  <h1>Player 1: {{game.player1}}</h1>
-  <h1>Player 2: {{game.player2}}</h1>
-{{/each}}
+<div class="container text-center mt-5 p-3 bg-light border">
+  <div class="row justify-content-center">
+    <div class="border-end border-bottom border-dark border-2 cell" id="1"></div>
+    <div class="border-end border-bottom border-dark border-2 cell" id="2"></div>
+    <div class="border-bottom border-dark border-2 cell" id="3">o</div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="border-end border-bottom border-dark border-2 cell" id="4"></div>
+    <div class="border-end border-bottom border-dark border-2 cell" id="5"></div>
+    <div class="border-bottom border-dark border-2 cell" id="6">x</div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="border-end border-dark border-2 cell" id="7"></div>
+    <div class="border-end border-dark border-2 cell" id="8">x</div>
+    <div class="border-dark border-2 cell" id="9"></div>
+  </div>
+</div>
