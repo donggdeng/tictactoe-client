@@ -6,7 +6,5 @@ export default class IndexRoute extends Route {
 
   model() {
     return this.store.findAll('games');
-
-    // return this.store.findAll('users');
   }
 }
