@@ -1,17 +1,28 @@
 <div class="container text-center mt-5 p-3 bg-light border" {{did-insert this.updateGame}}>
   <div class="row justify-content-center">
-    <div class="border-end border-bottom border-dark border-2 cell" data-position="1"></div>
-    <div class="border-end border-bottom border-dark border-2 cell" data-position="2"></div>
-    <div class="border-bottom border-dark border-2 cell" data-position="3"></div>
+    <div class="border-end border-bottom border-dark border-2 cell" data-position="1" {{on "click" this.playCell}}></div>
+    <div class="border-end border-bottom border-dark border-2 cell" data-position="2" {{on "click" this.playCell}}></div>
+    <div class="border-bottom border-dark border-2 cell" data-position="3" {{on "click" this.playCell}}></div>
   </div>
   <div class="row justify-content-center">
-    <div class="border-end border-bottom border-dark border-2 cell" data-position="4"></div>
-    <div class="border-end border-bottom border-dark border-2 cell" data-position="5"></div>
-    <div class="border-bottom border-dark border-2 cell" data-position="6"></div>
+    <div class="border-end border-bottom border-dark border-2 cell" data-position="4" {{on "click" this.playCell}}></div>
+    <div class="border-end border-bottom border-dark border-2 cell" data-position="5" {{on "click" this.playCell}}></div>
+    <div class="border-bottom border-dark border-2 cell" data-position="6" {{on "click" this.playCell}}></div>
   </div>
   <div class="row justify-content-center">
-    <div class="border-end border-dark border-2 cell" data-position="7"></div>
-    <div class="border-end border-dark border-2 cell" data-position="8"></div>
-    <div class="border-dark border-2 cell" data-position="9"></div>
+    <div class="border-end border-dark border-2 cell" data-position="7" {{on "click" this.playCell}}></div>
+    <div class="border-end border-dark border-2 cell" data-position="8" {{on "click" this.playCell}}></div>
+    <div class="border-dark border-2 cell" data-position="9" {{on "click" this.playCell}}></div>
   </div>
 </div>
+<div class="container text-center mt-5">
+  <h5>
+    Turn :
+    {{#if this.isPlayer1Turn}}
+      <span>Player 1 (x)</span>
+    {{else}}
+      <span>Player 2 (o)</span>
+    {{/if}}
+  </h5>
+</div>
+

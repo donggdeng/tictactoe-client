@@ -1,7 +1,14 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 
 export default class GameBoard extends Component {
+  @service store;
+
+  get isPlayer1Turn() {
+    return this.args.game.moves.length % 2 == 0;
+  }
+
   @action
   async updateGame(element) {
     const game = this.args.game;
@@ -15,5 +22,30 @@ export default class GameBoard extends Component {
       cell.innerText = move.player == 'player1' ? 'x' : 'o';
       cell.classList.add('played');
     });
+  }
+
+  @action
+  async playCell(event) {
+    const cell = event.target;
+    const position = cell.dataset.position;
+
+    if (cell.classList.contains('played')) {
+      return;
+    }
+
+    let newMove = this.store.createRecord('move', {
+      position: position,
+      game: this.args.game,
+    });
+
+    try {
+      await newMove.save();
+
+      cell.innerText = this.isPlayer1Turn ? 'x' : 'o';
+      cell.classList.add('played');
+      this.args.game.moves.pushObject(newMove);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
