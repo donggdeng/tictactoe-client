@@ -128,6 +128,14 @@ export default class GameBoard extends Component {
     if (this.isGameOver) {
       const gameBoardElement = cell.closest('.game-board');
       gameBoardElement.classList.add('finished');
+      this.alertGameOver();
     }
+  }
+
+  alertGameOver() {
+    const message = this.isDraw
+      ? "Game over! It's a draw!"
+      : `Game over! ${this.args.game.winner} won!`;
+    alert(message);
   }
 }
