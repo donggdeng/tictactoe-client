@@ -17,6 +17,34 @@ export default class GameBoard extends Component {
     return this.args.game.winner == 'draw';
   }
 
+  get gridRowNumbers() {
+    return Array.from({ length: 3 }, (_, index) => index + 1);
+  }
+
+  get gridColumnNumbers() {
+    return Array.from({ length: 3 }, (_, index) => index + 1);
+  }
+
+  calculatePosition(rowNumber, columnNumber) {
+    return (rowNumber - 1) * 3 + columnNumber;
+  }
+
+  cellClass(rowNumber, columnNumber) {
+    let cellClass = 'border-dark border-2 cell';
+
+    const position = (rowNumber - 1) * 3 + columnNumber;
+
+    if ([1, 2, 4, 5].includes(position)) {
+      cellClass += ' border-end border-bottom';
+    } else if ([3, 6].includes(position)) {
+      cellClass += ' border-bottom';
+    } else if ([7, 8].includes(position)) {
+      cellClass += ' border-end';
+    }
+
+    return cellClass;
+  }
+
   @action
   async playCell(event) {
     if (this.isGameOver) {
