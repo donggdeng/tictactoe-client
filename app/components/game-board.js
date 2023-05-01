@@ -19,15 +19,14 @@ export default class GameBoard extends Component {
 
   @action
   async playCell(event) {
-    const cell = event.target;
-    const gameBoardElement = cell.closest('.game-board');
-    const position = cell.dataset.position;
-
-    if (gameBoardElement.classList.contains('finished')) {
+    if (this.isGameOver) {
       return;
     }
 
-    if (cell.classList.contains('played')) {
+    const cell = event.target;
+    const position = cell.dataset.position;
+
+    if (this.isCellPlayed(cell)) {
       return;
     }
 
@@ -45,10 +44,40 @@ export default class GameBoard extends Component {
 
       this.updateCell(cell);
       await this.args.game.moves.reload();
-      this.updateGameStatus(gameBoardElement);
+      this.updateGameStatus(cell);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  @action
+  mouseEnterCell(event) {
+    if (this.isGameOver) {
+      return;
+    }
+
+    const cell = event.target;
+
+    if (this.isCellPlayed(cell)) {
+      return;
+    }
+
+    cell.innerText = this.isPlayer1Turn ? 'x' : 'o';
+  }
+
+  @action
+  mouseLeaveCell(event) {
+    if (this.isGameOver) {
+      return;
+    }
+
+    const cell = event.target;
+
+    if (this.isCellPlayed(cell)) {
+      return;
+    }
+
+    cell.innerText = '';
   }
 
   @action
@@ -56,15 +85,20 @@ export default class GameBoard extends Component {
     window.location.reload(true);
   }
 
+  isCellPlayed(cell) {
+    return cell.classList.contains('played');
+  }
+
   updateCell(cell) {
     cell.innerText = this.isPlayer1Turn ? 'x' : 'o';
     cell.classList.add('played');
   }
 
-  async updateGameStatus(gameBoardElement) {
+  async updateGameStatus(cell) {
     await this.args.game.reload();
 
-    if (this.args.game.status == 'finished') {
+    if (this.isGameOver) {
+      const gameBoardElement = cell.closest('.game-board');
       gameBoardElement.classList.add('finished');
     }
   }

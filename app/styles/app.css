@@ -12,4 +12,5 @@
 .game-board:not(.finished) .cell:not(.played):hover {
   background-color: #eee;
   cursor: pointer;
+  color: gray;
 }
