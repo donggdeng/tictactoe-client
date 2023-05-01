@@ -33,6 +33,10 @@ export default class GameBoard extends Component {
       return;
     }
 
+    if (this.args.game.id == null) {
+      await this.args.game.save();
+    }
+
     let newMove = this.store.createRecord('move', {
       position: position,
       game: this.args.game,
@@ -47,5 +51,10 @@ export default class GameBoard extends Component {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  @action
+  restartGame() {
+    window.location.reload(true);
   }
 }
