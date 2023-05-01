@@ -47,7 +47,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.apiHost = 'https://tictactoe-api.herokuapp.com';
   }
 
   return ENV;
