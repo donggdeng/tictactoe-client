@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.cell:not(.played):hover {
+.game-board:not(.finished) .cell:not(.played):hover {
   background-color: #eee;
   cursor: pointer;
 }
