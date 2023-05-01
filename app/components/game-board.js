@@ -18,20 +18,6 @@ export default class GameBoard extends Component {
   }
 
   @action
-  async updateGame(element) {
-    const moves = await this.args.game.moves;
-
-    moves.forEach((move) => {
-      const cell = element.querySelector(
-        `.cell[data-position="${move.position}"]`
-      );
-
-      cell.innerText = move.player == 'player1' ? 'x' : 'o';
-      cell.classList.add('played');
-    });
-  }
-
-  @action
   async playCell(event) {
     const cell = event.target;
     const gameBoardElement = cell.closest('.game-board');
