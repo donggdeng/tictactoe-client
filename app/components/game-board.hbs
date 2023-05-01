@@ -16,13 +16,22 @@
   </div>
 </div>
 <div class="container text-center mt-5">
-  <h5>
-    Turn :
-    {{#if this.isPlayer1Turn}}
-      <span>Player 1 (x)</span>
+  {{#if this.isGameOver}}
+    {{#if this.isDraw}}
+      <h5>Draw!</h5>
     {{else}}
-      <span>Player 2 (o)</span>
+      {{#if this.isPlayer1Turn}}
+        <h5>Player 2 (o) wins!</h5>
+      {{else}}
+        <h5>Player 1 (x) wins!</h5>
+      {{/if}}
     {{/if}}
-  </h5>
-  <button type="button" class="btn btn-outline-secondary btn-lg mt-2" {{on "click" this.restartGame}}>Restart</button>
+  {{else}}
+    {{#if this.isPlayer1Turn}}
+      <h5>Player 1 (x) turn</h5>
+    {{else}}
+      <h5>Player 2 (o) turn</h5>
+    {{/if}}
+  {{/if}}
+  <button type="button" class="btn btn-outline-secondary rounded-0 btn-lg mt-2" {{on "click" this.restartGame}}>Restart</button>
 </div>

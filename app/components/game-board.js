@@ -9,10 +9,17 @@ export default class GameBoard extends Component {
     return this.args.game.moves.length % 2 == 0;
   }
 
+  get isGameOver() {
+    return this.args.game.status == 'finished';
+  }
+
+  get isDraw() {
+    return this.args.game.winner == 'draw';
+  }
+
   @action
   async updateGame(element) {
-    const game = this.args.game;
-    const moves = await game.moves;
+    const moves = await this.args.game.moves;
 
     moves.forEach((move) => {
       const cell = element.querySelector(
@@ -51,7 +58,7 @@ export default class GameBoard extends Component {
       await newMove.save();
 
       this.updateCell(cell);
-      this.args.game.moves.pushObject(newMove);
+      await this.args.game.moves.reload();
       this.updateGameStatus(gameBoardElement);
     } catch (error) {
       console.log(error);
@@ -69,21 +76,10 @@ export default class GameBoard extends Component {
   }
 
   async updateGameStatus(gameBoardElement) {
-    const game = await this.args.game.reload();
+    await this.args.game.reload();
 
-    if (game.status == 'finished') {
+    if (this.args.game.status == 'finished') {
       gameBoardElement.classList.add('finished');
-      alert(`Game over! ${this.alertMessage(game.winner)}`);
-    }
-  }
-
-  alertMessage(winner) {
-    if (winner == 'player1') {
-      return 'Player 1 won!';
-    } else if (winner == 'player2') {
-      return 'Player 2 won!';
-    } else {
-      return 'Draw!';
     }
   }
 }
