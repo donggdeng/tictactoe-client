@@ -27,7 +27,7 @@ export default class GameBoard extends Component {
   @action
   async playCell(event) {
     const cell = event.target;
-    const gameBoardElement = cell.parentNode.parentNode;
+    const gameBoardElement = cell.closest('.game-board');
     const position = cell.dataset.position;
 
     if (gameBoardElement.classList.contains('finished')) {
